@@ -1,11 +1,17 @@
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from "./Pages/Home"
+import Game from "./Pages/Game/"
+import NotFound from "./Pages/NotFound"
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-red-400">
-        Hello world!
-      </h1>
-    </>
+    <HashRouter>
+      <Routes>
+       <Route path="/" element={<Home/>}/> 
+       <Route path="/game" element={<Game/>}/>
+       <Route path="*" element={<NotFound/>} />
+      </Routes>
+    </HashRouter>
   )
 }
 
