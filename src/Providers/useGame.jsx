@@ -1,4 +1,3 @@
-import { faL } from '@fortawesome/free-solid-svg-icons'
 import { create } from 'zustand'
 
 const useGame = create((set,get) => ({
@@ -11,6 +10,7 @@ const useGame = create((set,get) => ({
   turn:'X',
   win:null,
   modal:false,
+  isCPU:false,
   isConfigured:false,
   nextGame:()=>{
     set((state) => ({ tableGame:[['N','N','N'],['N','N','N'],['N','N','N']]}))
