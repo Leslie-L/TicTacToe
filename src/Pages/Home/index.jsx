@@ -1,15 +1,27 @@
-
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import { infoHome } from "../../Constants/constantsHome";
 import MainButtons from '../../Components/MainButtons';
 import ToggleButton from '../../Components/ToggleButton';
 import LogoTTT from '../../Components/LogoTTT';
+import useGame from '../../Providers/useGame';
 
 function Home() {
-    const [isChecked, setIsChecked] = useState(false)
+  const {configureGame }=useGame((state)=>({
+    configureGame:state.configureGame,
+  }))
+  const navigate = useNavigate();
+
+  const [isChecked, setIsChecked] = useState(false)
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
+  }
+  const handleConfigureUser= ()=>{
+    const playerX =isChecked ? 'YOU' : 'P2' ;
+    const playerO =isChecked ? 'P2': 'YOU';
+    configureGame(playerO,playerX)
+    navigate("/game")
   }
   
     return(
@@ -26,10 +38,12 @@ function Home() {
                     <MainButtons
                         text={infoHome.button1}
                         color={"bg-bntYellow"}
+                        handleEvent={()=>{}}
                     />
                     <MainButtons
                         text={infoHome.button2}
                         color={"bg-bntBlue"}
+                        handleEvent={handleConfigureUser}
                     />
 
                 </div>
