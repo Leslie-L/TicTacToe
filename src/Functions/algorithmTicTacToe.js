@@ -205,11 +205,11 @@ function findBestMove(board,player) {
     return [rowBM,colBM,bestMove];
 }
 
-
+/*
         
 let board=[[ 'X', 'O', 'N'],
         [ 'N', 'X', 'O'],
         [ 'N', 'N', 'O']];
  
 console.log(findBestMove(board,'X'));
-
+*/
