@@ -190,8 +190,8 @@ function findBestMove(board,player) {
             if(board[row][col]==='N'){
                 board[row][col]=player
                 const actualVal = minmax(board,player, 0, false);
-                console.log(board)
-                console.log(row,col,actualVal)
+                //console.log(board)
+                //console.log(row,col,actualVal)
                 board[row][col]='N'
                 if(actualVal>bestMove){
                     bestMove=actualVal;
