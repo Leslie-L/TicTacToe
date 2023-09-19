@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-
+import { findBestMove } from '../Functions/algorithmTicTacToe'
 const useGame = create((set,get) => ({
   playerX: null,
   playerO: null,

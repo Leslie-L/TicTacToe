@@ -180,7 +180,7 @@ function minmax(board,player, depth,isMaximizingPlayer) {
 }
 
 
-function findBestMove(board,player) {
+export function findBestMove(board,player) {
     let bestMove=null;
     let rowBM=-1;
     let colBM=-1;

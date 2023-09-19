@@ -7,9 +7,10 @@ import ShowResults from "../../Components/ShowResults";
 import { infoTurn } from "../../Constants/constantsGame";
 import useGame from "../../Providers/useGame";
 import ModalWin from "../../Components/ModalWin";
+import { findBestMove } from '../../Functions/algorithmTicTacToe'
 function Game() {
     const navigate = useNavigate();
-    const {playerX,playerO,playerXwins,playerOwins,ties,turn,modal,playGame,isConfigured,stateButton} = useGame(
+    const {playerX,playerO,playerXwins,playerOwins,ties,turn,modal,playGame,isConfigured,stateButton,tableGame} = useGame(
         (state) => ({ 
                       playerX:state.playerX,
                       playerO:state.playerO,
@@ -20,11 +21,17 @@ function Game() {
                       modal:state.modal,
                       playGame:state.playGame,
                       isConfigured:state.isConfigured,
-                      stateButton:state.stateButton
+                      stateButton:state.stateButton,
+                      tableGame:state.tableGame
                     })
       )
+     
     if(!isConfigured){
         navigate("/");
+    }
+    if((turn=='X' && playerX=='CPU') || (turn=='O' && playerO=='CPU' )){
+        const moves = findBestMove(tableGame,turn)
+        playGame(moves[0],moves[1]);
     }
     return(
         
