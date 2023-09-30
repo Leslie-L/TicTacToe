@@ -221,10 +221,11 @@ export function findBestMove(board,player) {
 }
 
 
-        
+/*      
 let board=[[ 'X', 'O', 'x'],
         [ 'X', 'N', 'N'],
         [ 'N', 'N', 'N']];
  
 console.log(findBestMove(board,'X'));
 
+*/

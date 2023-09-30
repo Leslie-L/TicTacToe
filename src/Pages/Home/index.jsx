@@ -24,9 +24,9 @@ function Home() {
     navigate("/game")
   }
   const handleConfigureCPU= ()=>{
-    const playerX =isChecked ? 'YOU' : 'CPU' ;
-    const playerO =isChecked ? 'CPU': 'YOU';
-    configureGame(playerO,playerX)
+    const playerX =isChecked ?  'CPU':'YOU' ;
+    const playerO =isChecked ?  'YOU': 'CPU';
+    configureGame(playerX,playerO)
     navigate("/game")
   }
   

@@ -61,7 +61,7 @@ const useGame = create((set,get) => ({
           if (element[0] !== 'N' && element[0] === element[1] && element[1] === element[2]) {
             get().winAdd(element[0]);
             set(() => ({ modal: true }));
-            return;
+            return true;
           }
         });
       
@@ -83,7 +83,7 @@ const useGame = create((set,get) => ({
           ) {
             get().winAdd(get().tableGame[0][i]);
             set(() => ({ modal: true }));
-            return;
+            return true;
           }
         }
       
@@ -94,7 +94,7 @@ const useGame = create((set,get) => ({
         ) {
           get().winAdd(get().tableGame[0][0]);
           set(() => ({ modal: true }));
-          return;
+          return true;
         }
       
         if (
@@ -104,7 +104,7 @@ const useGame = create((set,get) => ({
         ) {
           get().winAdd(get().tableGame[0][2]);
           set(() => ({ modal: true }));
-          return;
+          return true;
         }
       
         let isTie = true;
@@ -112,31 +112,42 @@ const useGame = create((set,get) => ({
           for (let j = 0; j < 3; j++) {
             if (get().tableGame[j][i] === 'N') {
               isTie = false;
-              return
+              return;
             }
           }
         }
       
         if (isTie) {
           get().winAdd('N');
+          return true;
         }
+        return false;
     },
     stateButton:(row,col)=>{
         return get().tableGame[row][col];
     },
     playGame: (row, col) => {
+        //console.log("execute")
+        let follow = false;
         if (get().canSelect(row, col)) {
           set((state) => {
             const updatedTableGame = [...state.tableGame];
             updatedTableGame[row][col] = state.turn;
             return { tableGame: updatedTableGame };
           });
-          get().checkWinner();
-          get().changeTurn();
-        }
-        console.log(get().turn, get().playerO);
-        if((get().turn=='X' && get().playerX=='CPU') || (get().turn=='O' && get().playerO=='CPU' )){
+          const winner = get().checkWinner();
           
+          if(get().turn=='X' && get().playerX=='CPU'|| (get().turn=='O' && get().playerO=='CPU' )){
+             follow=true
+          }
+          //console.log('boolean fin', (get().turn=='X' && get().playerX=='CPU') || (get().turn=='O' && get().playerO=='CPU' ))
+          get().changeTurn();
+          if(follow) return;
+          if(winner) return;
+        }
+        //console.log('boolean', (get().turn=='X' && get().playerX=='CPU') || (get().turn=='O' && get().playerO=='CPU' ))
+        if(get().turn=='X' && get().playerX=='CPU'|| (get().turn=='O' && get().playerO=='CPU' )){
+          //console.log('Desde el juego :Turno:',get().turn, get().playerO);
               const moves = findBestMove(get().tableGame,get().turn)
               get().playGame(moves[0],moves[1]);
          
