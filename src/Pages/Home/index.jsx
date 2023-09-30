@@ -20,13 +20,13 @@ function Home() {
   const handleConfigureUser= ()=>{
     const playerX =isChecked ? 'YOU' : 'P2' ;
     const playerO =isChecked ? 'P2': 'YOU';
-    configureGame(playerX,playerO)
+    configureGame(playerO,playerX)
     navigate("/game")
   }
   const handleConfigureCPU= ()=>{
     const playerX =isChecked ? 'YOU' : 'CPU' ;
     const playerO =isChecked ? 'CPU': 'YOU';
-    configureGame(playerX,playerO)
+    configureGame(playerO,playerX)
     navigate("/game")
   }
   

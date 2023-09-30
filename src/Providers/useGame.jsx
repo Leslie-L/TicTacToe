@@ -134,6 +134,13 @@ const useGame = create((set,get) => ({
           get().checkWinner();
           get().changeTurn();
         }
+        console.log(get().turn, get().playerO);
+        if((get().turn=='X' && get().playerX=='CPU') || (get().turn=='O' && get().playerO=='CPU' )){
+          
+              const moves = findBestMove(get().tableGame,get().turn)
+              get().playGame(moves[0],moves[1]);
+         
+        }
     }
       
 }

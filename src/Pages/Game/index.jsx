@@ -8,6 +8,7 @@ import { infoTurn } from "../../Constants/constantsGame";
 import useGame from "../../Providers/useGame";
 import ModalWin from "../../Components/ModalWin";
 import { findBestMove } from '../../Functions/algorithmTicTacToe'
+import { useEffect } from "react";
 function Game() {
     const navigate = useNavigate();
     const {playerX,playerO,playerXwins,playerOwins,ties,turn,modal,playGame,isConfigured,stateButton,tableGame} = useGame(
@@ -29,10 +30,12 @@ function Game() {
     if(!isConfigured){
         navigate("/");
     }
-    if((turn=='X' && playerX=='CPU') || (turn=='O' && playerO=='CPU' )){
-        const moves = findBestMove(tableGame,turn)
-        playGame(moves[0],moves[1]);
-    }
+        useEffect(()=>{
+            if((turn=='X' && playerX=='CPU') ){
+                const moves = findBestMove(tableGame,turn)
+                playGame(moves[0],moves[1]);
+            }
+        },[modal])
     return(
         
         <section className=" w-full h-screen flex flex-col justify-center items-center bg-primary">
