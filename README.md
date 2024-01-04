@@ -1,8 +1,33 @@
-# React + Vite
+# React Tic Tac Toe
+Welcome to the React Tic Tac Toe game built with Vite, React, Zustand, and Tailwind CSS.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Responsive Design:
+  - Enjoy an optimal layout based on the device's screen size.
+- Interactive Elements:
+  - Experience hover states for all interactive elements on the page.
+- Game Modes:
+  - Play against the computer with an intelligent AI using the minimax algorithm.
+  - Challenge a friend in multiplayer mode.
+## Demo
+[Tic Tac Toe](https://clever-sable-45175b.netlify.app)
 
-Currently, two official plugins are available:
+## How to use
+```bash
+##Clone the repository:
+git clone https://github.com/Leslie-L/TicTacToe.git
+##Open the project folder:
+cd react-tic-tac-toe
+##Install dependencies:
+npm install
+##Run the development server:
+npm run dev
+```
+Open the game in your preferred web browser.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Implementation Details
+AI Algorithm:
+The computer opponent uses the minimax algorithm for an intelligent move in Tic Tac Toe.
+More information click [here](https://www.geeksforgeeks.org/finding-optimal-move-in-tic-tac-toe-using-minimax-algorithm-in-game-theory/).
+- The algorithm has some defects when is defending the movments of the oponent.
+- Feel free to make any sugestion.
